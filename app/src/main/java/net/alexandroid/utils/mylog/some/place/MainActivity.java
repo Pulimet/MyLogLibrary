@@ -20,7 +20,11 @@ public class MainActivity extends AppCompatActivity {
         setViews();
 
 
-        Log.d("YOUR_TAG", "Simple log example");
+        Log.d("YOUR_TAG", "Simple log example 1");
+        Log.d("YOUR_TAG", "Simple log example 2");
+        Log.d("YOUR_TAG", "Simple log example 3");
+        Log.d("YOUR_TAG", "Simple log example 4");
+        Log.d("YOUR_TAG", "Simple log example 5");
 
         MyLog.d("===============================================================");
         MyLog.e("Empty 1");
