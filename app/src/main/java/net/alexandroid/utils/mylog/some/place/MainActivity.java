@@ -18,43 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setViews();
-
-
-        Log.d("YOUR_TAG", "Simple log example 1");
-        Log.d("YOUR_TAG", "Simple log example 2");
-        Log.d("YOUR_TAG", "Simple log example 3");
-        Log.d("YOUR_TAG", "Simple log example 4");
-        Log.d("YOUR_TAG", "Simple log example 5");
-
-        MyLog.d("===============================================================");
-        MyLog.e("Empty 1");
-        MyLog.e("Empty 2");
-        MyLog.d("===============================================================");
-
-        MyLog.setTag("NEW TAG");
-        MyLog.i("Tag changed");
-        MyLog.i("to NEW TAG");
-        MyLog.d("===============================================================");
-
-        MyLog.setPackageNameVisibility(true);
-        MyLog.w("Show package");
-        MyLog.w("enabled");
-        MyLog.d("===============================================================");
-
-        MyLog.setIsTimeVisible(false);
-        MyLog.w("Show time");
-        MyLog.w("enabled");
-        MyLog.d("===============================================================");
-
-        MyLog.setIsRemoveOverride(false);
-        MyLog.w("Remove override");
-        MyLog.w("disabled");
-        MyLog.d("===============================================================");
-
-        MyLog.setThreadIdVisibility(true);
-        MyLog.w("Show thread is");
-        MyLog.w("enabled");
-        MyLog.d("===============================================================");
     }
 
     private void setViews() {
@@ -66,9 +29,74 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                log();
+                            }
+                        }).show();
             }
         });
     }
 
+
+    private void log() {
+        Log.d("YOUR_TAG", "Simple log example 1");
+        Log.d("YOUR_TAG", "Simple log example 2");
+        Log.d("YOUR_TAG", "Simple log example 3");
+        Log.d("YOUR_TAG", "Simple log example 4");
+        Log.d("YOUR_TAG", "Simple log example 5");
+
+        MyLog.d("===============================================================");
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.d("===============================================================");
+
+        MyLog.setTag("TAG");
+        MyLog.i("Tag changed to NEW TAG");
+
+        MyLog.d("===============================================================");
+
+        MyLog.setPackageNameVisibility(true);
+        MyLog.w("Show package");
+        MyLog.w("enabled");
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.d("===============================================================");
+
+        MyLog.setIsTimeVisible(false);
+        MyLog.w("Show time");
+        MyLog.w("enabled");
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.d("===============================================================");
+
+        MyLog.w("Remove override");
+        MyLog.w("disabled");
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.setIsRemoveOverride(false);
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.d("===============================================================");
+
+        MyLog.setThreadIdVisibility(true);
+        MyLog.w("Show thread is");
+        MyLog.w("enabled");
+        MyLog.d("Empty 1");
+        MyLog.i("Empty 2");
+        MyLog.w("Empty 3");
+        MyLog.e("Empty 4");
+        MyLog.d("===============================================================");
+    }
 }
