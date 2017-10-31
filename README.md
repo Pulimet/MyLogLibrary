@@ -2,8 +2,7 @@
 Simple android logger (2017)
 
 [ ![Download](https://api.bintray.com/packages/pulimet/utils/mylog/images/download.svg) ](https://bintray.com/pulimet/utils/mylog/_latestVersion)      
-<a href="http://www.methodscount.com/?lib=net.alexandroid.utils%3Amylog%3A1.1">
-<img src="https://img.shields.io/badge/Methods and size-0 | 0 KB-e91e63.svg"/></a> [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+<a href="http://www.methodscount.com/?lib=net.alexandroid.utils%3Amylog%3A1.1"><img src="https://img.shields.io/badge/Methods and size-23 | 3 KB-e91e63.svg"/></a> [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 
 Simple android logger
@@ -44,14 +43,45 @@ public class MyApplication extends Application {
         ...>
 ```
 
-# How to use it
+# How I use it
 
+## Stage 1 - Remove logcat headers
+Usualy logs look like below:  <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/1.PNG">
+
+First go to Configure Logcat Header:  <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/2.PNG">
+
+Uncheck all options and press OK:  <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/3.PNG">
+
+Now your logs looks like below:   <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/4.PNG">
+
+## Stage 2 - Customize logs color scheme
+File -> Settings -> Editor -> Colors & Fonts -> Android Logcat
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/5.PNG">
+
+## Stage 3 - Library customization
+Default: <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/6.PNG">
+
+MyLog.setPackageNameVisibility(true); <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/7.PNG">
+
+MyLog.setIsTimeVisible(false); <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/8.PNG">
+
+MyLog.setThreadIdVisibility(true); <br> 
+<img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/9.PNG">
+ <br>  <br> 
+* You can change TAG with  MyLog.setTag("CUSTOM TAG");
 
  <br>  <br>  <br> 
 # License
 
 ```
-Copyright 2016 Alexey Korolev
+Copyright 2017 Alexey Korolev
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
