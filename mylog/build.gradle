@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'utils'
+    bintrayName = 'mylog'
+
+    publishedGroupId = 'net.alexandroid.utils'
+    libraryName = 'MyLog'
+    artifact = 'mylog'
+
+    libraryDescription = 'Shared Preferences Helper library for getting and setting shared preferences'
+
+    siteUrl = 'https://github.com/Pulimet/MyLogLibrary'
+    gitUrl = 'https://github.com/Pulimet/MyLogLibrary.git'
+
+    libraryVersion = '1.1'
+
+    developerId = 'pulimet'
+    developerName = 'Alexey Korolev'
+    developerEmail = 'korolev2009@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            postprocessing {
+                removeUnusedCode false
+                removeUnusedResources false
+                obfuscate false
+                optimizeCode false
+                proguardFile 'proguard-rules.pro'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
