@@ -1,8 +1,8 @@
 # MyLog - Library
 Simple android logger (2017)
 
-[ ![Download](https://api.bintray.com/packages/pulimet/utils/mylog/images/download.svg) ](https://bintray.com/pulimet/utils/mylog/_latestVersion)      
-<a href="http://www.methodscount.com/?lib=net.alexandroid.utils%3Amylog%3A1.1"><img src="https://img.shields.io/badge/Methods and size-23 | 3 KB-e91e63.svg"/></a> [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[ ![Download](https://api.bintray.com/packages/pulimet/utils/mylog/images/download.svg) ](https://bintray.com/pulimet/utils/mylog/_latestVersion)
+ [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MyLog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6422)      <a href="http://www.methodscount.com/?lib=net.alexandroid.utils%3Amylog%3A1.1"><img src="https://img.shields.io/badge/Methods and size-23 | 3 KB-e91e63.svg"/></a> [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0) 
 
 
 # Installation
