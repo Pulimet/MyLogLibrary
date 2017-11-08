@@ -5,8 +5,6 @@ Simple android logger (2017)
 <a href="http://www.methodscount.com/?lib=net.alexandroid.utils%3Amylog%3A1.1"><img src="https://img.shields.io/badge/Methods and size-23 | 3 KB-e91e63.svg"/></a> [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 
-Simple android logger
-
 # Installation
 
 - Add the dependency from jCenter to your app's (not project) build.gradle file:
@@ -45,6 +43,20 @@ public class MyApplication extends Application {
 
 # How I use it
 
+```sh
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    
+    MyLog.setTag("CUSTOM TAG")
+    MyLog.d("Empty 1");
+    MyLog.i("Empty 2");
+    MyLog.w("Empty 3");
+    MyLog.e("Empty 4");
+}
+```    
+
 ## Stage 1 - Remove logcat headers
 Usualy logs look like below:  <br> 
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/1.PNG">
@@ -66,20 +78,23 @@ File -> Settings -> Editor -> Colors & Fonts -> Android Logcat
 Default: <br> 
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/6.PNG">
 
-MyLog.setPackageNameVisibility(true); <br> 
+```sh
+MyLog.setPackageNameVisibility(true); 
+```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/7.PNG">
 
-MyLog.setIsTimeVisible(false); <br> 
+```sh
+MyLog.setIsTimeVisible(false);
+```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/8.PNG">
 
-MyLog.setThreadIdVisibility(true); <br> 
+```sh
+MyLog.setThreadIdVisibility(true); 
+```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/9.PNG">
- <br>  <br> 
-* You can change TAG with  MyLog.setTag("CUSTOM TAG");
 
  <br>  <br>  <br> 
 # License
-
 ```
 Copyright 2017 Alexey Korolev
 
