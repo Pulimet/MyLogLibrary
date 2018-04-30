@@ -3,6 +3,8 @@ package net.alexandroid.utils.mylog;
 import android.content.Context;
 import android.util.Log;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,8 +22,6 @@ public class MyLog {
     public static void init(Context appContext) {
         sPackageName = appContext.getPackageName();
     }
-
-
 
     public static void showLogs(boolean pShowLogs) {
         sShowLogs = pShowLogs;
@@ -49,43 +49,47 @@ public class MyLog {
 
     public static void v(String msg) {
         if (sShowLogs) {
-            logIt(Log.VERBOSE, msg);
+            logIt(Log.VERBOSE, msg, null);
         }
     }
 
     public static void d(String msg) {
         if (sShowLogs) {
-            logIt(Log.DEBUG, msg);
+            logIt(Log.DEBUG, msg, null);
         }
     }
 
     public static void i(String msg) {
         if (sShowLogs) {
-            logIt(Log.INFO, msg);
+            logIt(Log.INFO, msg, null);
         }
     }
 
-
     public static void w(String msg) {
         if (sShowLogs) {
-            logIt(Log.WARN, msg);
+            logIt(Log.WARN, msg, null);
         }
     }
 
     public static void e(String msg) {
         if (sShowLogs) {
-            logIt(Log.ERROR, msg);
+            logIt(Log.ERROR, msg, null);
+        }
+    }
+
+    public static void e(String msg, Throwable t) {
+        if (sShowLogs) {
+            logIt(Log.ERROR, msg, t);
         }
     }
 
     public static void a(String msg) {
         if (sShowLogs) {
-            logIt(Log.ASSERT, msg);
+            logIt(Log.ASSERT, msg, null);
         }
     }
 
-
-    private static void logIt(int level, String msg) {
+    private static void logIt(int level, String msg, Throwable t) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         if (stackTrace != null && stackTrace.length > 4) {
             StackTraceElement element = stackTrace[4];
@@ -129,6 +133,16 @@ public class MyLog {
 
             // Message
             result.append(msg);
+
+            if (t != null) {
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                t.printStackTrace(pw);
+                pw.flush();
+                result.append("\n Throwable: ");
+                result.append(sw.toString());
+            }
+
             Log.println(level, sTag, result.toString());
         }
     }

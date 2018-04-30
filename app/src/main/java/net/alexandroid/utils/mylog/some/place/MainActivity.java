@@ -98,5 +98,9 @@ public class MainActivity extends AppCompatActivity {
         MyLog.w("Empty 3");
         MyLog.e("Empty 4");
         MyLog.d("===============================================================");
+
+        MyLog.e("show Exception", new NullPointerException());
+        MyLog.d("===============================================================");
+
     }
 }
