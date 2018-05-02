@@ -2,10 +2,8 @@ package net.alexandroid.utils.mylog.some.place;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import net.alexandroid.utils.mylog.MyLog;
@@ -28,79 +26,58 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                log();
-                            }
-                        }).show();
+                log();
             }
         });
     }
 
 
     private void log() {
-        Log.d("YOUR_TAG", "Simple log example 1");
-        Log.d("YOUR_TAG", "Simple log example 2");
-        Log.d("YOUR_TAG", "Simple log example 3");
-        Log.d("YOUR_TAG", "Simple log example 4");
-        Log.d("YOUR_TAG", "Simple log example 5");
+        justPrintLogs();
+        showPackageName();
+        hideTime();
+        showOverride();
+        showThreadId();
+        printExceptionLog();
+    }
 
+    private void printExceptionLog() {
+        MyLog.e("Show Exception", new NullPointerException());
         MyLog.d("===============================================================");
-        MyLog.d("Empty 1");
-        MyLog.i("Empty 2");
-        MyLog.w("Empty 3");
-        MyLog.e("Empty 4");
-        MyLog.d("===============================================================");
+    }
 
-        MyLog.setTag("TAG");
-        MyLog.i("Tag changed to NEW TAG");
-
-        MyLog.d("===============================================================");
-
-        MyLog.setPackageNameVisibility(true);
-        MyLog.w("Show package");
-        MyLog.w("enabled");
-        MyLog.d("Empty 1");
-        MyLog.i("Empty 2");
-        MyLog.w("Empty 3");
-        MyLog.e("Empty 4");
-        MyLog.d("===============================================================");
-
-        MyLog.setIsTimeVisible(false);
-        MyLog.w("Show time");
-        MyLog.w("enabled");
-        MyLog.d("Empty 1");
-        MyLog.i("Empty 2");
-        MyLog.w("Empty 3");
-        MyLog.e("Empty 4");
-        MyLog.d("===============================================================");
-
-        MyLog.w("Remove override");
-        MyLog.w("disabled");
-        MyLog.d("Empty 1");
-        MyLog.i("Empty 2");
-        MyLog.w("Empty 3");
-        MyLog.e("Empty 4");
-        MyLog.setIsRemoveOverride(false);
-        MyLog.d("Empty 1");
-        MyLog.i("Empty 2");
-        MyLog.w("Empty 3");
-        MyLog.e("Empty 4");
-        MyLog.d("===============================================================");
-
+    private void showThreadId() {
         MyLog.setThreadIdVisibility(true);
         MyLog.w("Show thread is");
         MyLog.w("enabled");
+        MyLog.d("===============================================================");
+    }
+
+    private void showOverride() {
+        MyLog.w("Remove override disabled");
+        MyLog.setIsRemoveOverride(false);
+        MyLog.d("===============================================================");
+    }
+
+    private void hideTime() {
+        MyLog.setIsTimeVisible(false);
+        MyLog.w("Show time disabled");
+        MyLog.d("Some log for tests");
+        MyLog.d("===============================================================");
+    }
+
+    private void showPackageName() {
+        MyLog.setPackageNameVisibility(true);
+        MyLog.w("Show package enabled");
+        MyLog.d("Some log for tests");
+        MyLog.d("===============================================================");
+    }
+
+    private void justPrintLogs() {
         MyLog.d("Empty 1");
         MyLog.i("Empty 2");
         MyLog.w("Empty 3");
         MyLog.e("Empty 4");
         MyLog.d("===============================================================");
-
-        MyLog.e("show Exception", new NullPointerException());
-        MyLog.d("===============================================================");
-
     }
 }

@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    compile 'net.alexandroid.utils:mylog:1.1'
+    compile 'net.alexandroid.utils:mylog:1.2'
 }
 ```
 
@@ -27,9 +27,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        
-        MyLog.init(this);
-        MyLog.showLogs(BuildConfig.DEBUG);
+        MyLog.init(this, "MyLog", BuildConfig.DEBUG); 
+        //       Context,  Tag,   Show logs?
     }
 }
 ```
@@ -56,6 +55,10 @@ protected void onCreate(Bundle savedInstanceState) {
     MyLog.e("Empty 4");
 }
 ```    
+
+# Release notes
+1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
+
 
 ## Stage 1 - Remove logcat headers
 Usualy logs look like below:  <br> 

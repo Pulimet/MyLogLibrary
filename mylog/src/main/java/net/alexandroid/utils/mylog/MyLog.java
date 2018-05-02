@@ -23,6 +23,17 @@ public class MyLog {
         sPackageName = appContext.getPackageName();
     }
 
+    public static void init(Context appContext, String pTag) {
+        sPackageName = appContext.getPackageName();
+        sTag = pTag + " - ";
+    }
+
+    public static void init(Context appContext, String pTag, boolean pShowLogs) {
+        sPackageName = appContext.getPackageName();
+        sTag = pTag + " - ";
+        sShowLogs = pShowLogs;
+    }
+
     public static void showLogs(boolean pShowLogs) {
         sShowLogs = pShowLogs;
     }
@@ -77,15 +88,15 @@ public class MyLog {
         }
     }
 
-    public static void e(String msg, Throwable t) {
-        if (sShowLogs) {
-            logIt(Log.ERROR, msg, t);
-        }
-    }
-
     public static void a(String msg) {
         if (sShowLogs) {
             logIt(Log.ASSERT, msg, null);
+        }
+    }
+
+    public static void e(String msg, Throwable t) {
+        if (sShowLogs) {
+            logIt(Log.ERROR, msg, t);
         }
     }
 
@@ -110,7 +121,6 @@ public class MyLog {
 
             if (sIsPackageNameVisible) {
                 simpleClassName.append(fullClassName.replace(sPackageName, ""));
-
             } else {
                 simpleClassName.append(fullClassName.substring(fullClassName.lastIndexOf('.')));
             }
