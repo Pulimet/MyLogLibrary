@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation project(':mylog')
+    //implementation 'net.alexandroid.utils:mylog:1.3'
 }
