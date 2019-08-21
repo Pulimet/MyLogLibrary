@@ -1,6 +1,8 @@
-package net.alexandroid.utils.mylog;
+package net.alexandroid.utils.mylogsmaple;
 
 import android.app.Application;
+
+import net.alexandroid.utils.mylog.MyLog;
 
 public class MyApplication extends Application {
 

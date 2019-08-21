@@ -1,13 +1,14 @@
-package net.alexandroid.utils.mylog.some.place;
+package net.alexandroid.utils.mylogsmaple.some.place;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import net.alexandroid.utils.mylog.MyLog;
-import net.alexandroid.utils.mylog.R;
+import net.alexandroid.utils.mylogsmaple.R;
 
 public class MainActivity extends AppCompatActivity {
 

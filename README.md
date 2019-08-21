@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    compile 'net.alexandroid.utils:mylog:1.2'
+    compile 'net.alexandroid.utils:mylog:1.3'
 }
 ```
 
@@ -57,6 +57,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
+1.3 - AndroidX migration, Target 29
 1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
 
 
