@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void log() {
         justPrintLogs();
+        customTag();
         showPackageName();
         hideTime();
         showOverride();
@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     private void printExceptionLog() {
         MyLog.e("Show Exception", new NullPointerException());
         MyLog.d("===============================================================");
+    }
+
+    private void customTag() {
+        MyLog.d("CustomTag1", "Custom tag example 1");
+        MyLog.d("CustomTag2", "Custom tag example 2");
     }
 
     private void showThreadId() {

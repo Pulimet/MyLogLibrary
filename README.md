@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.alexandroid.utils:mylog:1.3'
+    implementation 'net.alexandroid.utils:mylog:1.4'
 }
 ```
 
@@ -48,15 +48,20 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
-    MyLog.setTag("CUSTOM TAG")
+    MyLog.setTag("STATIC CUSTOM TAG")
     MyLog.d("Empty 1");
     MyLog.i("Empty 2");
     MyLog.w("Empty 3");
     MyLog.e("Empty 4");
+
+    MyLog.d("CustomTag", "Custom tag example message");
+
+    MyLog.e("Show Exception", new NullPointerException());
 }
 ```    
 
 # Release notes
+1.4 - Custom tag support<br>
 1.3 - AndroidX migration, Target 29<br>
 1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
 

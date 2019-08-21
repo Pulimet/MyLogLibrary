@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class MyLog {
-    private static String sTag = "MyLog-";
+    private static String sTag = "MyLog";
     private static boolean sShowLogs = true;
     private static boolean sIsPackageNameVisible = false;
     private static boolean sIsThreadIdVisible = false;
@@ -25,12 +25,12 @@ public class MyLog {
 
     public static void init(Context appContext, String pTag) {
         sPackageName = appContext.getPackageName();
-        sTag = pTag + " - ";
+        sTag = pTag;
     }
 
     public static void init(Context appContext, String pTag, boolean pShowLogs) {
         sPackageName = appContext.getPackageName();
-        sTag = pTag + " - ";
+        sTag = pTag;
         sShowLogs = pShowLogs;
     }
 
@@ -59,48 +59,70 @@ public class MyLog {
     }
 
     public static void v(String msg) {
-        if (sShowLogs) {
-            logIt(Log.VERBOSE, msg, null);
-        }
+        if (sShowLogs) logIt(Log.VERBOSE, msg);
+    }
+
+    public static void v(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.VERBOSE, msg, customTag);
     }
 
     public static void d(String msg) {
-        if (sShowLogs) {
-            logIt(Log.DEBUG, msg, null);
-        }
+        if (sShowLogs) logIt(Log.DEBUG, msg);
+    }
+
+    public static void d(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.DEBUG, msg, customTag);
     }
 
     public static void i(String msg) {
-        if (sShowLogs) {
-            logIt(Log.INFO, msg, null);
-        }
+        if (sShowLogs) logIt(Log.INFO, msg);
+    }
+
+    public static void i(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.INFO, msg, customTag);
     }
 
     public static void w(String msg) {
-        if (sShowLogs) {
-            logIt(Log.WARN, msg, null);
-        }
+        if (sShowLogs) logIt(Log.WARN, msg);
+    }
+
+    public static void w(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.WARN, msg, customTag);
     }
 
     public static void e(String msg) {
-        if (sShowLogs) {
-            logIt(Log.ERROR, msg, null);
-        }
+        if (sShowLogs) logIt(Log.ERROR, msg);
+    }
+
+    public static void e(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.ERROR, msg, customTag);
     }
 
     public static void a(String msg) {
-        if (sShowLogs) {
-            logIt(Log.ASSERT, msg, null);
-        }
+        if (sShowLogs) logIt(Log.ASSERT, msg);
+    }
+
+    public static void a(String customTag, String msg) {
+        if (sShowLogs) logIt(Log.ASSERT, msg, customTag);
     }
 
     public static void e(String msg, Throwable t) {
-        if (sShowLogs) {
-            logIt(Log.ERROR, msg, t);
-        }
+        if (sShowLogs) logIt(Log.ERROR, msg, t, null);
     }
 
-    private static void logIt(int level, String msg, Throwable t) {
+    public static void e(String customTag, String msg, Throwable t) {
+        if (sShowLogs) logIt(Log.ERROR, msg, t, customTag);
+    }
+
+    private static void logIt(int level, String msg) {
+        logIt(level, msg, null, null);
+    }
+
+    private static void logIt(int level, String msg, String customTag) {
+        logIt(level, msg, null, customTag);
+    }
+
+    private static void logIt(int level, String msg, Throwable t, String customTag) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         if (stackTrace != null && stackTrace.length > 4) {
             StackTraceElement element = stackTrace[4];
@@ -153,7 +175,7 @@ public class MyLog {
                 result.append(sw.toString());
             }
 
-            Log.println(level, sTag, result.toString());
+            Log.println(level, customTag == null ? sTag : sTag + ">" + customTag, result.toString());
         }
     }
 
@@ -164,7 +186,7 @@ public class MyLog {
     }
 
     private static String getTime() {
-        DateFormat df = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        DateFormat df = new SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault());
         return df.format(Calendar.getInstance().getTime());
     }
 
