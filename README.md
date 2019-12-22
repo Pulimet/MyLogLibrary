@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.alexandroid.utils:mylog:1.4'
+    implementation 'net.alexandroid.utils:mylog:1.5'
 }
 ```
 
@@ -61,6 +61,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
+1.5 - Bug fix + Kotlin version
 1.4 - Custom tag support<br>
 1.3 - AndroidX migration, Target 29<br>
 1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
