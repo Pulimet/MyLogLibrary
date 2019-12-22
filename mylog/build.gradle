@@ -48,8 +48,5 @@ android {
 
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
 apply from: 'installv1.gradle'
 apply from: 'bintrayv1.gradle'
