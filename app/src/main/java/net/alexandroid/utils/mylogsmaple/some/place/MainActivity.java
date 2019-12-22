@@ -1,9 +1,11 @@
 package net.alexandroid.utils.mylogsmaple.some.place;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
                 log();
             }
         });
+
+        findViewById(R.id.btnOpenKotlin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, KotlinActivity.class));
+            }
+        });
     }
 
     private void log() {
@@ -37,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         customTag();
         showPackageName();
         hideTime();
-        showOverride();
         showThreadId();
         printExceptionLog();
     }
@@ -56,12 +64,6 @@ public class MainActivity extends AppCompatActivity {
         MyLog.setThreadIdVisibility(true);
         MyLog.w("Show thread is");
         MyLog.w("enabled");
-        MyLog.d("===============================================================");
-    }
-
-    private void showOverride() {
-        MyLog.w("Remove override disabled");
-        MyLog.setIsRemoveOverride(false);
         MyLog.d("===============================================================");
     }
 

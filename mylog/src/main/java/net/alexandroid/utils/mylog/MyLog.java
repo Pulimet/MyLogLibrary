@@ -16,7 +16,6 @@ public class MyLog {
     private static boolean sIsPackageNameVisible = false;
     private static boolean sIsThreadIdVisible = false;
     private static boolean sIsTimeVisible = true;
-    private static boolean sIsRemoveOverride = true;
     private static String sPackageName;
 
     public static void init(Context appContext) {
@@ -52,10 +51,6 @@ public class MyLog {
 
     public static void setIsTimeVisible(boolean newValue) {
         sIsTimeVisible = newValue;
-    }
-
-    public static void setIsRemoveOverride(boolean newValue) {
-        sIsRemoveOverride = newValue;
     }
 
     public static void v(String msg) {
@@ -124,8 +119,8 @@ public class MyLog {
 
     private static void logIt(int level, String msg, Throwable t, String customTag) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        if (stackTrace != null && stackTrace.length > 4) {
-            StackTraceElement element = stackTrace[4];
+        if (stackTrace != null && stackTrace.length > 5) {
+            StackTraceElement element = stackTrace[5];
 
             StringBuilder result = new StringBuilder();
             if (sIsTimeVisible) {
@@ -145,10 +140,6 @@ public class MyLog {
                 simpleClassName.append(fullClassName.replace(sPackageName, ""));
             } else {
                 simpleClassName.append(fullClassName.substring(fullClassName.lastIndexOf('.')));
-            }
-
-            if (sIsRemoveOverride && simpleClassName.indexOf("$override") != -1) {
-                simpleClassName.replace(simpleClassName.indexOf("$override"), simpleClassName.length(), "*");
             }
 
             while (simpleClassName.length() < (sIsPackageNameVisible ? 35 : 15)) {

@@ -1,19 +1,21 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 ext {
     bintrayRepo = 'utils'
     bintrayName = 'mylog'
 
     publishedGroupId = 'net.alexandroid.utils'
-    libraryName = 'MyLog'
-    artifact = 'mylog'
+    libraryName = 'MyLogKt'
+    artifact = 'mylogkt'
 
     libraryDescription = 'Android Logger'
 
     siteUrl = 'https://github.com/Pulimet/MyLogLibrary'
     gitUrl = 'https://github.com/Pulimet/MyLogLibrary.git'
 
-    libraryVersion = '1.5'
+    libraryVersion = '1.4'
 
     developerId = 'pulimet'
     developerName = 'Alexey Korolev'
@@ -23,15 +25,18 @@ ext {
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
 }
-
 android {
     compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -41,11 +46,15 @@ android {
                 removeUnusedResources false
                 obfuscate false
                 optimizeCode false
-                proguardFile 'proguard-rules.pro'
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
         }
     }
 
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply from: '../installv1.gradle'

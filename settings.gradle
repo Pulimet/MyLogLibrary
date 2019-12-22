@@ -1,1 +1,1 @@
-include ':app', ':mylog'
+include ':app', ':mylog', ':mylogkt'

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -29,5 +31,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation project(':mylog')
+    implementation project(':mylogkt')
     //implementation 'net.alexandroid.utils:mylog:1.4'
+    //implementation 'net.alexandroid.utils:mylogkt:1.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
