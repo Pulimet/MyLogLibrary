@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 ext {
     bintrayRepo = 'utils'
-    bintrayName = 'mylog'
+    bintrayName = 'mylogkt'
 
     publishedGroupId = 'net.alexandroid.utils'
     libraryName = 'MyLogKt'
@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/Pulimet/MyLogLibrary'
     gitUrl = 'https://github.com/Pulimet/MyLogLibrary.git'
 
-    libraryVersion = '1.5'
+    libraryVersion = '1.7'
 
     developerId = 'pulimet'
     developerName = 'Alexey Korolev'
@@ -55,6 +55,11 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+// Avoid Kotlin docs error
+tasks.withType(Javadoc) {
+    enabled = false
 }
 
 apply from: '../installv1.gradle'

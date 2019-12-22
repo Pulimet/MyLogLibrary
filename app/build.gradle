@@ -32,7 +32,7 @@ dependencies {
 
     implementation project(':mylog')
     implementation project(':mylogkt')
-    //implementation 'net.alexandroid.utils:mylog:1.4'
-    //implementation 'net.alexandroid.utils:mylogkt:1.4'
+    //implementation 'net.alexandroid.utils:mylog:1.5'
+    //implementation 'net.alexandroid.utils:mylogkt:1.7'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

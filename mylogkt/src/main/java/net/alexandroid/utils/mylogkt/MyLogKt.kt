@@ -36,44 +36,62 @@ object MyLogKt {
         }
 
         val stackTrace = Thread.currentThread().stackTrace
-        if (stackTrace.size > 6) {
-            val element = stackTrace[6]
-            val result = StringBuilder()
-            if (isTimeVisible) result.append(getTime()).append(" - ")
-            if (isThreadIdVisible) result.append("T:").append(getThreadId()).append(" | ")
+        val elementIndex: Int = getElementIndex(stackTrace)
+        if (elementIndex == 0) return
 
-            // Class
-            val simpleClassName = StringBuilder()
-            val fullClassName = element.className
-            if (isPackageNameVisible) {
-                simpleClassName.append(fullClassName.replace(packageName, ""))
-            } else {
-                simpleClassName.append(fullClassName.substring(fullClassName.lastIndexOf('.')))
-            }
+        val element = stackTrace[elementIndex]
+        val result = StringBuilder()
+        if (isTimeVisible) result.append(getTime()).append(" - ")
+        if (isThreadIdVisible) result.append("T:").append(getThreadId()).append(" | ")
 
-            while (simpleClassName.length < if (isPackageNameVisible) 35 else 15) {
-                simpleClassName.append(" ")
-            }
-            result.append(simpleClassName).append(" # ")
-
-            // Method
-            val methodName = java.lang.StringBuilder(element.methodName)
-            methodName.append("()")
-            while (methodName.length < 25) methodName.append(" ")
-            result.append(methodName).append(" => ")
-
-            // Message
-            result.append(msg)
-            if (t != null) {
-                val sw = StringWriter()
-                val pw = PrintWriter(sw)
-                t.printStackTrace(pw)
-                pw.flush()
-                result.append("\n Throwable: ")
-                result.append(sw.toString())
-            }
-            Log.println(level, if (customTag == null) tag else "$tag>$customTag", result.toString())
+        // Class
+        val simpleClassName = StringBuilder()
+        val fullClassName = element.className
+        if (isPackageNameVisible) {
+            simpleClassName.append(fullClassName.replace(packageName, ""))
+        } else {
+            simpleClassName.append(fullClassName.substring(fullClassName.lastIndexOf('.')))
         }
+
+        while (simpleClassName.length < if (isPackageNameVisible) 35 else 15) {
+            simpleClassName.append(" ")
+        }
+        result.append(simpleClassName).append(" # ")
+
+        // Method
+        val methodName = StringBuilder(element.methodName)
+        methodName.append("()")
+        while (methodName.length < 25) methodName.append(" ")
+        result.append(methodName).append(" => ")
+
+        // Message
+        result.append(msg)
+        if (t != null) {
+            val sw = StringWriter()
+            val pw = PrintWriter(sw)
+            t.printStackTrace(pw)
+            pw.flush()
+            result.append("\n Throwable: ")
+            result.append(sw.toString())
+        }
+        Log.println(level, if (customTag == null) tag else "$tag>$customTag", result.toString())
+    }
+
+    private fun getElementIndex(stackTrace: Array<StackTraceElement>?): Int {
+        if (stackTrace == null) return 0
+        // 0 - .VMStack        # getThreadStackTrace()
+        // 1 - .Thread         # getStackTrace()
+        // 2 - .MyLogKt        # logIt$mylogkt_debug()
+        // 3 - .MyLogKtKt      # logD()
+        // 4 - .MyLogKtKt      # logD$default()
+        // 5 - .MyLogKtKt      # logD() / .KotlinActivity # justPrintLogs()
+
+        for (i in 2..stackTrace.size) {
+            val className = stackTrace[i].className ?: ""
+            if (className.contains("MyLogKt")) continue
+            return i
+        }
+        return 0
     }
 
     private fun getThreadId(): StringBuilder? {
@@ -89,31 +107,31 @@ object MyLogKt {
 }
 
 @JvmOverloads
-fun logV(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logV(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.VERBOSE, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logD(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logD(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.DEBUG, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logI(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logI(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.INFO, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logW(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logW(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.WARN, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logE(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logE(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.ERROR, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logA(msg: String, customTag: String? = null, t: Throwable? = null ) {
+fun logA(msg: String, customTag: String? = null, t: Throwable? = null) {
     logIt(Log.ASSERT, msg, t, customTag)
 }

@@ -16,6 +16,9 @@ repositories {
 
 dependencies {
     implementation 'net.alexandroid.utils:mylog:1.5'
+
+    // Kotlin version
+    implementation 'net.alexandroid.utils:mylogkt:1.7'
 }
 ```
 
