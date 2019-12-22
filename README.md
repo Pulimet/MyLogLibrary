@@ -38,6 +38,12 @@ public class MyApplication extends Application {
         super.onCreate();
         MyLog.init(this, "MyLog", BuildConfig.DEBUG); 
         //       Context,  Tag,   Show logs?
+        
+        //Kotlin from Java
+        MyLogKt.INSTANCE.init(this, "MyLog", BuildConfig.DEBUG);
+        
+        // Kotlin from Kotlin :)
+        MyLogKt.init(this, "MyLog", BuildConfig.DEBUG);
     }
 }
 ```
@@ -57,7 +63,8 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
-    MyLog.setTag("STATIC CUSTOM TAG")
+    // Java lib
+    MyLog.setTag("STATIC CUSTOM TAG");
     MyLog.d("Empty 1");
     MyLog.i("Empty 2");
     MyLog.w("Empty 3");
@@ -66,10 +73,22 @@ protected void onCreate(Bundle savedInstanceState) {
     MyLog.d("CustomTag", "Custom tag example message");
 
     MyLog.e("Show Exception", new NullPointerException());
+    
+    // Kotlin lib
+    MyLogKt.tag = "STATIC CUSTOM TAG"
+    logD("Empty 1")
+    logI("Empty 2")
+    logW("Empty 3")
+    logE("Empty 4")
+
+    logD("Custom tag example 1", "CustomTag1")
+
+    logE("Show Exception", t = NullPointerException())
 }
 ```    
 
 # Release notes
+1.7 (only kotlin version) - Koltin library bug fixes
 1.5 - Bug fix + Kotlin version
 1.4 - Custom tag support<br>
 1.3 - AndroidX migration, Target 29<br>
@@ -99,16 +118,19 @@ Default: <br>
 
 ```sh
 MyLog.setPackageNameVisibility(true); 
+MyLogKt.isPackageNameVisible = true
 ```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/7.PNG">
 
 ```sh
 MyLog.setIsTimeVisible(false);
+MyLogKt.isTimeVisible = false
 ```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/8.PNG">
 
 ```sh
 MyLog.setThreadIdVisibility(true); 
+MyLogKt.isThreadIdVisible = true
 ```
 <img src="https://raw.githubusercontent.com/Pulimet/MyLogLibrary/master/art/9.PNG">
 
