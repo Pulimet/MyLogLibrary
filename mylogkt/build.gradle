@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/Pulimet/MyLogLibrary'
     gitUrl = 'https://github.com/Pulimet/MyLogLibrary.git'
 
-    libraryVersion = '1.8'
+    libraryVersion = '1.9'
 
     developerId = 'pulimet'
     developerName = 'Alexey Korolev'
