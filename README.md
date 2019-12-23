@@ -28,8 +28,11 @@ dependencies {
 }
 ```
 
+- Consider adding following proguard rule:
+-assumenosideeffects class net.alexandroid.utils.mylogkt.MyLogKtKt { *; }
 
-- Add init line in your application class as shown below:
+
+- Next:
 
 ```sh
 public class MyApplication extends Application {
@@ -37,7 +40,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         
-        // Java
+        // Java (Mandatory)
         MyLog.init(this, "MyLog", BuildConfig.DEBUG); // Context,  Tag,   Show logs?
         
         //Kotlin from Java (Optional, to allow isPackageNameVisible = true)
