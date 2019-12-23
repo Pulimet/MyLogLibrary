@@ -36,14 +36,16 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MyLog.init(this, "MyLog", BuildConfig.DEBUG); 
-        //       Context,  Tag,   Show logs?
+        
+        // Java
+        MyLog.init(this, "MyLog", BuildConfig.DEBUG); // Context,  Tag,   Show logs?
         
         //Kotlin from Java (Optional, to allow isPackageNameVisible = true)
         MyLogKt.INSTANCE.setPackageName(getPackageName());
         
         // Kotlin from Kotlin (Optional, to allow isPackageNameVisible = true)
         MyLogKt.packageName = packageName
+        MyLogKt.isLogsShown = BuildConfig.DEBUG
 
         // Other Koltin version configurations
         var packageName = ""
