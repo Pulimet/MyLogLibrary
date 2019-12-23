@@ -24,7 +24,7 @@ dependencies {
     implementation 'net.alexandroid.utils:mylog:1.5'
 
     // Kotlin version
-    implementation 'net.alexandroid.utils:mylogkt:1.7'
+    implementation 'net.alexandroid.utils:mylogkt:1.8'
 }
 ```
 
@@ -39,11 +39,26 @@ public class MyApplication extends Application {
         MyLog.init(this, "MyLog", BuildConfig.DEBUG); 
         //       Context,  Tag,   Show logs?
         
-        //Kotlin from Java
-        MyLogKt.INSTANCE.init(this, "MyLog", BuildConfig.DEBUG);
+        //Kotlin from Java (Optional, to allow isPackageNameVisible = true)
+        MyLogKt.INSTANCE.setPackageName(getPackageName());
         
-        // Kotlin from Kotlin :)
-        MyLogKt.init(this, "MyLog", BuildConfig.DEBUG);
+        // Kotlin from Kotlin (Optional, to allow isPackageNameVisible = true)
+        MyLogKt.packageName = packageName
+
+        // Other Koltin version configurations
+        var packageName = ""
+        var isLogsShown = true
+        var isThreadNameVisible = false
+        var isTimeVisible = true
+        var isPackageNameVisible = false
+        var isClassNameVisible = true
+        var isMethodNameVisible = true
+
+        val classNameLength = 15
+        val packageAndClassNameLength = 35
+        val methodNameLength = 15
+        val threadNameLength = 6
+        val timeFormat = "HH:mm:ss.SSS"
     }
 }
 ```
@@ -88,7 +103,8 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
-1.7 (only kotlin version) - Koltin library bug fixes
+1.8 (kotlin version) - Remove init, thread name instead of tread id
+1.7 (kotlin version) - Koltin library bug fixes
 1.5 - Bug fix + Kotlin version
 1.4 - Custom tag support<br>
 1.3 - AndroidX migration, Target 29<br>

@@ -1,6 +1,5 @@
 package net.alexandroid.utils.mylogkt
 
-import android.content.Context
 import android.util.Log
 import net.alexandroid.utils.mylogkt.MyLogKt.logIt
 import java.io.PrintWriter
@@ -10,30 +9,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object MyLogKt {
-    private lateinit var packageName: String
-    var tag: String = ""
-        set(value) {
-            field = "$value - "
-        }
+    var tag: String = "MyLog"
 
+    var packageName = ""
     var isLogsShown = true
-    var isPackageNameVisible = false
-    var isThreadIdVisible = false
+    var isThreadNameVisible = false
     var isTimeVisible = true
+    var isPackageNameVisible = false
+    var isClassNameVisible = true
+    var isMethodNameVisible = true
 
-    @JvmOverloads
-    fun init(appContext: Context, tag: String = "MyLog - ", showLogs: Boolean = true) {
-        packageName = appContext.packageName
-        this.tag = tag
-        this.isLogsShown = showLogs
-    }
+    val classNameLength = 15
+    val packageAndClassNameLength = 35
+    val methodNameLength = 15
+    val threadNameLength = 6
+    val timeFormat = "HH:mm:ss.SSS"
 
     internal fun logIt(level: Int, msg: String, t: Throwable?, customTag: String?) {
         if (!isLogsShown) return
-        if (!::packageName.isInitialized) {
-            Log.println(Log.ERROR, tag, "==== MyLog library is not initialized ====")
-            return
-        }
 
         val stackTrace = Thread.currentThread().stackTrace
         val elementIndex: Int = getElementIndex(stackTrace)
@@ -42,30 +35,34 @@ object MyLogKt {
         val element = stackTrace[elementIndex]
         val result = StringBuilder()
         if (isTimeVisible) result.append(getTime()).append(" - ")
-        if (isThreadIdVisible) result.append("T:").append(getThreadId()).append(" | ")
+        if (isThreadNameVisible) result.append("T:").append(getThreadId()).append(" | ")
 
-        // Class
-        val simpleClassName = StringBuilder()
-        val fullClassName = element.className
-        if (isPackageNameVisible) {
-            simpleClassName.append(fullClassName.replace(packageName, ""))
-        } else {
-            simpleClassName.append(fullClassName.substring(fullClassName.lastIndexOf('.')))
+        if (isClassNameVisible) {
+            val tempResultLength = result.length
+            val fullClassName = element.className
+            if (isPackageNameVisible) {
+                result.append(fullClassName.replace(packageName, ""))
+            } else {
+                result.append(fullClassName.substring(fullClassName.lastIndexOf('.') + 1))
+            }
+
+            val classNameFinalLength = result.length - tempResultLength
+            val length = if (isPackageNameVisible) packageAndClassNameLength else classNameLength
+            addSpaces(result, length - classNameFinalLength)
+            result.append(" # ")
         }
 
-        while (simpleClassName.length < if (isPackageNameVisible) 35 else 15) {
-            simpleClassName.append(" ")
+        if (isMethodNameVisible) {
+            val methodName = element.methodName + "()"
+            result.append(methodName)
+            addSpaces(result, methodNameLength - methodName.length)
+            result.append("=> ")
         }
-        result.append(simpleClassName).append(" # ")
-
-        // Method
-        val methodName = StringBuilder(element.methodName)
-        methodName.append("()")
-        while (methodName.length < 25) methodName.append(" ")
-        result.append(methodName).append(" => ")
 
         // Message
         result.append(msg)
+
+        // Exception
         if (t != null) {
             val sw = StringWriter()
             val pw = PrintWriter(sw)
@@ -74,7 +71,13 @@ object MyLogKt {
             result.append("\n Throwable: ")
             result.append(sw.toString())
         }
-        Log.println(level, if (customTag == null) tag else "$tag>$customTag", result.toString())
+
+        val tag = if (customTag == null) tag else "$tag>$customTag"
+        Log.println(level, tag, result.toString())
+    }
+
+    private fun addSpaces(result: StringBuilder, spaces: Int) {
+        if (spaces > 0) result.append(" ".repeat(spaces))
     }
 
     private fun getElementIndex(stackTrace: Array<StackTraceElement>?): Int {
@@ -95,13 +98,13 @@ object MyLogKt {
     }
 
     private fun getThreadId(): StringBuilder? {
-        val threadId = StringBuilder(Thread.currentThread().id.toString())
-        while (threadId.length < 6) threadId.append(" ")
+        val threadId = StringBuilder(Thread.currentThread().name)
+        while (threadId.length < threadNameLength) threadId.append(" ")
         return threadId
     }
 
     private fun getTime(): String? {
-        val df: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
+        val df: DateFormat = SimpleDateFormat(timeFormat, Locale.getDefault())
         return df.format(Calendar.getInstance().time)
     }
 }

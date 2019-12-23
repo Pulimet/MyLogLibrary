@@ -17,7 +17,7 @@ public class MyApplication extends Application {
         MyLog.d("init");
 
         // Kotlin version
-        MyLogKt.INSTANCE.init(this, "MyLog", BuildConfig.DEBUG);
+        MyLogKt.INSTANCE.setPackageName(getPackageName());
         logD("init");
     }
 }

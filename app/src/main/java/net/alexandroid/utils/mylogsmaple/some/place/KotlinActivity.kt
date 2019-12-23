@@ -36,7 +36,7 @@ class KotlinActivity : AppCompatActivity() {
     }
 
     private fun showThreadId() {
-        MyLogKt.isThreadIdVisible = true
+        MyLogKt.isThreadNameVisible = true
         logW("Show thread is")
         logW("enabled")
         logD("===============================================================")
@@ -53,6 +53,7 @@ class KotlinActivity : AppCompatActivity() {
         MyLogKt.isPackageNameVisible = true
         logW("Show package enabled")
         logD("Some log for tests")
+        MyLogKt.isPackageNameVisible = false
         logD("===============================================================")
     }
 
