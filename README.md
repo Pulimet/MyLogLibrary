@@ -24,7 +24,7 @@ dependencies {
     implementation 'net.alexandroid.utils:mylog:1.5'
 
     // Kotlin version
-    implementation 'net.alexandroid.utils:mylogkt:1.8'
+    implementation 'net.alexandroid.utils:mylogkt:1.9'
 }
 ```
 
@@ -108,6 +108,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
+1.9 (kotlin version) - Allow logging functions to be empty
 1.8 (kotlin version) - Remove init, thread name instead of tread id
 1.7 (kotlin version) - Koltin library bug fixes
 1.5 - Bug fix + Kotlin version

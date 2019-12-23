@@ -56,11 +56,13 @@ object MyLogKt {
             val methodName = element.methodName + "()"
             result.append(methodName)
             addSpaces(result, methodNameLength - methodName.length)
-            result.append("=> ")
         }
 
         // Message
-        result.append(msg)
+        if (msg.isNotEmpty()) {
+            result.append("=> ")
+            result.append(msg)
+        }
 
         // Exception
         if (t != null) {
@@ -110,31 +112,31 @@ object MyLogKt {
 }
 
 @JvmOverloads
-fun logV(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logV(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.VERBOSE, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logD(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logD(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.DEBUG, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logI(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logI(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.INFO, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logW(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logW(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.WARN, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logE(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logE(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.ERROR, msg, t, customTag)
 }
 
 @JvmOverloads
-fun logA(msg: String, customTag: String? = null, t: Throwable? = null) {
+fun logA(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.ASSERT, msg, t, customTag)
 }
