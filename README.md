@@ -1,5 +1,5 @@
 # MyLog - Library
-Simple android logger (2017)
+Simple android logger (2019)
 
 Java version: 
 [ ![Download](https://api.bintray.com/packages/pulimet/utils/mylog/images/download.svg) ](https://bintray.com/pulimet/utils/mylog/_latestVersion)
@@ -29,8 +29,15 @@ dependencies {
 ```
 
 - Consider adding following proguard rule:
+```sh
+# Remove all log* methods from prpject
 -assumenosideeffects class net.alexandroid.utils.mylogkt.MyLogKtKt { *; }
-
+# Remove specific logger methods
+-assumenosideeffects class net.alexandroid.utils.mylogkt.MyLogKtKt {
+    public static *** logD$default(...);
+    public static *** logW$default(...);
+}
+```
 
 - Next:
 
