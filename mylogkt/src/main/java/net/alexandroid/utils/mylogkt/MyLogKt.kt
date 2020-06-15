@@ -18,6 +18,7 @@ object MyLogKt {
     var isPackageNameVisible = false
     var isClassNameVisible = true
     var isMethodNameVisible = true
+    var isSpacingEnabled = true
 
     val classNameLength = 15
     val packageAndClassNameLength = 35
@@ -79,7 +80,7 @@ object MyLogKt {
     }
 
     private fun addSpaces(result: StringBuilder, spaces: Int) {
-        if (spaces > 0) result.append(" ".repeat(spaces))
+        if (isSpacingEnabled) if (spaces > 0) result.append(" ".repeat(spaces))
     }
 
     private fun getElementIndex(stackTrace: Array<StackTraceElement>?): Int {
@@ -93,15 +94,16 @@ object MyLogKt {
 
         for (i in 2..stackTrace.size) {
             val className = stackTrace[i].className ?: ""
-            if (className.contains("MyLogKt")) continue
+            if (className.contains(this.javaClass.simpleName)) continue
             return i
         }
         return 0
     }
 
     private fun getThreadId(): StringBuilder? {
-        val threadId = StringBuilder(Thread.currentThread().name)
-        while (threadId.length < threadNameLength) threadId.append(" ")
+        val name = Thread.currentThread().name
+        val threadId = StringBuilder(name)
+        addSpaces(threadId, threadNameLength - name.length)
         return threadId
     }
 
