@@ -23,6 +23,13 @@ class KotlinActivity : AppCompatActivity() {
         hideTime()
         showThreadId()
         printExceptionLog()
+        changeTag()
+    }
+
+    private fun changeTag() {
+        logD("Log with default tag")
+        MyLogKt.tag = "CustomDefaultTag"
+        logD("Changed default tag")
     }
 
     private fun printExceptionLog() {
@@ -31,6 +38,7 @@ class KotlinActivity : AppCompatActivity() {
     }
 
     private fun customTag() {
+        logD("Without custom tag")
         logD("Custom tag example 1", "CustomTag1")
         logD("Custom tag example 2", "CustomTag2")
     }
@@ -40,16 +48,20 @@ class KotlinActivity : AppCompatActivity() {
         logW("Show thread is")
         logW("enabled")
         logD("===============================================================")
+        MyLogKt.isThreadNameVisible = false
     }
 
     private fun hideTime() {
+        logD("Default time format")
+        MyLogKt.timeFormat = "HH:mm"
         MyLogKt.isTimeVisible = false
         logW("Show time disabled")
-        logD("Some log for tests")
         logD("===============================================================")
     }
 
     private fun showPackageName() {
+        logW("Show package disabled")
+        MyLogKt.packageName = packageName
         MyLogKt.isPackageNameVisible = true
         logW("Show package enabled")
         logD("Some log for tests")

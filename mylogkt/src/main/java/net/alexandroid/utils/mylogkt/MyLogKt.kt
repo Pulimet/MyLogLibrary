@@ -21,11 +21,11 @@ object MyLogKt {
     var isSpacingEnabled = true
     var isLengthShouldWrap = true
 
-    val classNameLength = 15
-    val packageAndClassNameLength = 35
-    val methodNameLength = 15
-    val threadNameLength = 6
-    val timeFormat = "HH:mm:ss.SSS"
+    var classNameLength = 15
+    var packageAndClassNameLength = 35
+    var methodNameLength = 15
+    var threadNameLength = 6
+    var timeFormat = "HH:mm:ss.SSS"
 
     internal fun logIt(level: Int, msg: String, t: Throwable?, customTag: String?) {
         if (!isLogsShown) return

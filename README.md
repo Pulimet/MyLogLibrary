@@ -24,7 +24,7 @@ dependencies {
     implementation 'net.alexandroid.utils:mylog:1.5'
 
     // Kotlin version
-    implementation 'net.alexandroid.utils:mylogkt:1.11'
+    implementation 'net.alexandroid.utils:mylogkt:1.12'
 }
 ```
 
@@ -57,21 +57,21 @@ public class MyApplication extends Application {
         MyLogKt.packageName = packageName
         MyLogKt.isLogsShown = BuildConfig.DEBUG
 
-        // Other Koltin version configurations
-        var packageName = ""
-        var isLogsShown = true
-        var isThreadNameVisible = false
-        var isTimeVisible = true
-        var isPackageNameVisible = false
-        var isClassNameVisible = true
-        var isMethodNameVisible = true
-        var isLengthShouldWrap = true
+        // Other Kotlin version configurations
+        MyLogKt.packageName = ""
+        MyLogKt.isLogsShown = true
+        MyLogKt.isThreadNameVisible = false
+        MyLogKt.isTimeVisible = true
+        MyLogKt.isPackageNameVisible = false
+        MyLogKt.isClassNameVisible = true
+        MyLogKt.isMethodNameVisible = true
+        MyLogKt.isLengthShouldWrap = true
 
-        val classNameLength = 15
-        val packageAndClassNameLength = 35
-        val methodNameLength = 15
-        val threadNameLength = 6
-        val timeFormat = "HH:mm:ss.SSS"
+        MyLogKt.classNameLength = 15
+        MyLogKt.packageAndClassNameLength = 35
+        MyLogKt.methodNameLength = 15
+        MyLogKt.threadNameLength = 6
+        MyLogKt.timeFormat = "HH:mm:ss.SSS"
     }
 }
 ```
@@ -116,6 +116,8 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
+1.12(kotlin version) - Allow more configurations
+
 1.11(kotlin version) - Refactoring, classes/methods wrapping
 
 1.9 (kotlin version) - Allow logging functions to be empty
