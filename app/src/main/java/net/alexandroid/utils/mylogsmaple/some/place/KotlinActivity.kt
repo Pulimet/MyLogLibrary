@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_kotlin.*
 import net.alexandroid.utils.mylogkt.*
 import net.alexandroid.utils.mylogsmaple.R
+import kotlin.concurrent.thread
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -24,12 +25,31 @@ class KotlinActivity : AppCompatActivity() {
         showThreadId()
         printExceptionLog()
         changeTag()
+        aFunctionWithVeryLongName()
+        space()
+    }
+
+    private fun space() {
+        logD("Spacing enabled")
+        MyLogKt.isSpacingEnabled = false
+        logD("Spacing disabled")
+
+        MyLogKt.isSpacingEnabled = true
+    }
+
+    private fun aFunctionWithVeryLongName() {
+        logD("Wrapping enabled by default")
+        MyLogKt.isLengthShouldWrap = false
+        logD("Wrapping disabled")
+
+        MyLogKt.isLengthShouldWrap = true
     }
 
     private fun changeTag() {
         logD("Log with default tag")
         MyLogKt.tag = "CustomDefaultTag"
         logD("Changed default tag")
+        MyLogKt.tag = "MyLog"
     }
 
     private fun printExceptionLog() {
@@ -44,9 +64,11 @@ class KotlinActivity : AppCompatActivity() {
     }
 
     private fun showThreadId() {
+        logW("Show thread name disabled")
         MyLogKt.isThreadNameVisible = true
-        logW("Show thread is")
-        logW("enabled")
+        logW("Show thread name enabled")
+        thread { logD("Other thread") }
+        Thread.sleep(500)
         logD("===============================================================")
         MyLogKt.isThreadNameVisible = false
     }
@@ -54,6 +76,7 @@ class KotlinActivity : AppCompatActivity() {
     private fun hideTime() {
         logD("Default time format")
         MyLogKt.timeFormat = "HH:mm"
+        logD("Time format changed")
         MyLogKt.isTimeVisible = false
         logW("Show time disabled")
         logD("===============================================================")
