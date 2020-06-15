@@ -65,6 +65,7 @@ public class MyApplication extends Application {
         var isPackageNameVisible = false
         var isClassNameVisible = true
         var isMethodNameVisible = true
+        var isLengthShouldWrap = true
 
         val classNameLength = 15
         val packageAndClassNameLength = 35
