@@ -58,6 +58,7 @@ class KotlinActivity : AppCompatActivity() {
     }
 
     private fun justPrintLogs() {
+        logD()
         logD("Empty 1")
         logI("Empty 2")
         logW("Empty 3")

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyLogLibrary.iml" filepath="$PROJECT_DIR$/MyLogLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mylog/mylog.iml" filepath="$PROJECT_DIR$/mylog/mylog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mylogkt/mylogkt.iml" filepath="$PROJECT_DIR$/mylogkt/mylogkt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyLogLibrary.iml" filepath="$PROJECT_DIR$/MyLogLibrary.iml" group="MyLogLibrary" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="MyLogLibrary/app" />
+      <module fileurl="file://$PROJECT_DIR$/mylog/mylog.iml" filepath="$PROJECT_DIR$/mylog/mylog.iml" group="MyLogLibrary/mylog" />
+      <module fileurl="file://$PROJECT_DIR$/mylogkt/mylogkt.iml" filepath="$PROJECT_DIR$/mylogkt/mylogkt.iml" group="MyLogLibrary/mylogkt" />
     </modules>
   </component>
 </project>
