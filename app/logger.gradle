@@ -1,0 +1,18 @@
+android {
+    Properties properties = new Properties()
+    if (project.rootProject.file("local.properties").exists()) {
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    }
+
+    defaultConfig {
+        buildConfigField "boolean", "isThreadNameVisible", properties.getProperty("logger.isThreadNameVisible", "false")
+        buildConfigField "boolean", "isTimeVisible", properties.getProperty("logger.isTimeVisible","false")
+        buildConfigField "boolean", "isPackageNameVisible", properties.getProperty("logger.isPackageNameVisible", "false")
+        buildConfigField "boolean", "isClassNameVisible", properties.getProperty("logger.isClassNameVisible", "true")
+        buildConfigField "boolean", "isMethodNameVisible", properties.getProperty("logger.isMethodNameVisible", "true")
+        buildConfigField "boolean", "isSpacingEnabled", properties.getProperty("logger.isSpacingEnabled", "false")
+        buildConfigField "boolean", "isLengthShouldWrap", properties.getProperty("logger.isLengthShouldWrap", "true")
+        buildConfigField "int", "classNameLength", properties.getProperty("logger.classNameLength", "15")
+        buildConfigField "int", "methodNameLength", properties.getProperty("logger.methodNameLength", "20")
+    }
+}

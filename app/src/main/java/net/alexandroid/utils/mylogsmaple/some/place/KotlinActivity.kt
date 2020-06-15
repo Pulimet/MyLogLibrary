@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_kotlin.*
 import net.alexandroid.utils.mylogkt.*
+import net.alexandroid.utils.mylogsmaple.BuildConfig
 import net.alexandroid.utils.mylogsmaple.R
 import kotlin.concurrent.thread
 
@@ -14,7 +15,21 @@ class KotlinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_kotlin)
         setSupportActionBar(toolbar)
 
+        setParamsFromLocalProperties()
+
         fab.setOnClickListener { log() }
+    }
+
+    private fun setParamsFromLocalProperties() {
+        MyLogKt.isThreadNameVisible = BuildConfig.isThreadNameVisible
+        MyLogKt.isTimeVisible = BuildConfig.isTimeVisible
+        MyLogKt.isPackageNameVisible = BuildConfig.isPackageNameVisible
+        MyLogKt.isClassNameVisible = BuildConfig.isClassNameVisible
+        MyLogKt.isMethodNameVisible = BuildConfig.isMethodNameVisible
+        MyLogKt.isSpacingEnabled = BuildConfig.isSpacingEnabled
+        MyLogKt.isLengthShouldWrap = BuildConfig.isLengthShouldWrap
+        MyLogKt.classNameLength = BuildConfig.classNameLength
+        MyLogKt.methodNameLength = BuildConfig.methodNameLength
     }
 
     private fun log() {

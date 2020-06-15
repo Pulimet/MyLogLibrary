@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply from: 'logger.gradle'
+
 android {
     compileSdkVersion 29
     defaultConfig {
