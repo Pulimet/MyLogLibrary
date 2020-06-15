@@ -1,5 +1,5 @@
 # MyLog - Library
-Simple android logger (2019)
+Simple android logger (2020)
 
 Java version: 
 [ ![Download](https://api.bintray.com/packages/pulimet/utils/mylog/images/download.svg) ](https://bintray.com/pulimet/utils/mylog/_latestVersion)
@@ -24,7 +24,7 @@ dependencies {
     implementation 'net.alexandroid.utils:mylog:1.5'
 
     // Kotlin version
-    implementation 'net.alexandroid.utils:mylogkt:1.9'
+    implementation 'net.alexandroid.utils:mylogkt:1.11'
 }
 ```
 
@@ -115,6 +115,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```    
 
 # Release notes
+1.11(kotlin version) - Refactoring, classes/methods wrapping
 1.9 (kotlin version) - Allow logging functions to be empty
 1.8 (kotlin version) - Remove init, thread name instead of tread id
 1.7 (kotlin version) - Koltin library bug fixes
