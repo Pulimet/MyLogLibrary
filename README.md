@@ -93,15 +93,15 @@ public class MyApplication extends Application {
 ```    
 
 # Release notes
-1.12(kotlin version) - Allow more configurations
-1.11(kotlin version) - Refactoring, classes/methods wrapping
-1.9 (kotlin version) - Allow logging functions to be empty
-1.8 (kotlin version) - Remove init, thread name instead of tread id
-1.7 (kotlin version) - Koltin library bug fixes
-1.5 - Bug fix + Kotlin version
-1.4 - Custom tag support<br>
-1.3 - AndroidX migration, Target 29<br>
-1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
+- 1.12(kotlin version) - Allow more configurations
+- 1.11(kotlin version) - Refactoring, classes/methods wrapping
+- 1.9 (kotlin version) - Allow logging functions to be empty
+- 1.8 (kotlin version) - Remove init, thread name instead of tread id
+- 1.7 (kotlin version) - Koltin library bug fixes
+- 1.5 - Bug fix + Kotlin version
+- 1.4 - Custom tag support<br>
+- 1.3 - AndroidX migration, Target 29<br>
+- 1.2 - Add MyLog.e(String msg, Throwable t) - (by @davidHarush), 2 new constructors
 
 
 ## Stage 1 - Remove logcat headers
