@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.alexandroid.utils:mylogkt:1.12'
+    implementation 'net.alexandroid.utils:mylogkt:1.13'
 }
 ```
 
@@ -85,6 +85,14 @@ public class MyApplication extends Application {
     logI("Empty 2")
     logW("Empty 3")
     logE("Empty 4")
+    logV("Empty 5")
+
+   // Same functions
+    debug("Empty 1")
+    info("Empty 2")
+    warn("Empty 3")
+    error("Empty 4")
+    verbose("Empty 5")
 
     logD("Custom tag example 1", "CustomTag1")
 
@@ -93,6 +101,7 @@ public class MyApplication extends Application {
 ```    
 
 # Release notes
+- 1.13(kotlin version) - Added "debug, info, warn, error, verbose" functions
 - 1.12(kotlin version) - Allow more configurations
 - 1.11(kotlin version) - Refactoring, classes/methods wrapping
 - 1.9 (kotlin version) - Allow logging functions to be empty

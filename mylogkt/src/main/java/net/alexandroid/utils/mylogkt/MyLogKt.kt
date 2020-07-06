@@ -152,3 +152,29 @@ fun logE(msg: String = "", customTag: String? = null, t: Throwable? = null) {
 fun logA(msg: String = "", customTag: String? = null, t: Throwable? = null) {
     logIt(Log.ASSERT, msg, t, customTag)
 }
+
+// Same functions with different names (excluding assert)
+@JvmOverloads
+fun verbose(msg: String = "", customTag: String? = null, t: Throwable? = null) {
+    logIt(Log.VERBOSE, msg, t, customTag)
+}
+
+@JvmOverloads
+fun debug(msg: String = "", customTag: String? = null, t: Throwable? = null) {
+    logIt(Log.DEBUG, msg, t, customTag)
+}
+
+@JvmOverloads
+fun info(msg: String = "", customTag: String? = null, t: Throwable? = null) {
+    logIt(Log.INFO, msg, t, customTag)
+}
+
+@JvmOverloads
+fun warn(msg: String = "", customTag: String? = null, t: Throwable? = null) {
+    logIt(Log.WARN, msg, t, customTag)
+}
+
+@JvmOverloads
+fun error(msg: String = "", customTag: String? = null, t: Throwable? = null) {
+    logIt(Log.ERROR, msg, t, customTag)
+}
